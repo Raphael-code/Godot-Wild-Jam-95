@@ -15,29 +15,29 @@ text = "[font_size=48]Collaborators[/font_size]
 
 [font_size=32]coded by[/font_size]
 Raphael Prunonosa 
-[url=]chronosmitor w/ https://chronosmitor.itch.io[/url]  
+[url=https://chronosmitor.itch.io]chronosmitor[/url]  
 
 [font_size=32]Assets[/font_size]
 [font_size=24]PSX First Person Arms[/font_size]
-Author: [url=]drillimpact[/url]  
-Source: [url=]https://drillimpact.itch.iol[/url]  
-License: [url=]CC0 [/url]
+Author: [url=https://drillimpact.itch.io]drillimpact[/url]
+Source: [url=]https://drillimpact.itch.io[/url]  
+License: CC0
 
 [font_size=32]Tools[/font_size]
 [font_size=24]Godot Minimal Game Template[/font_size]
-[img=80]res:///assets/plugin_logo/logo.png[/img]  
+[img=80]res://assets/plugin_logo/logo.png[/img]  
 Author: [url=https://github.com/Maaack/Godot-Minimal-Game-Template/graphs/contributors]Marek Belski and contributors[/url]  
 Source: [url=https://github.com/Maaack/Godot-Minimal-Game-Template]github: Godot-Minimal-Game-Template[/url]  
 License: [url=LICENSE.txt]MIT License[/url]  
 
 [font_size=24]Git[/font_size]
-[img=80]res:///assets/git_logo/Git-Logo-2Color.png[/img]  
+[img=80]res://assets/git_logo/Git-Logo-2Color.png[/img]  
 Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
 Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
 License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
 
 [font_size=24]Godot[/font_size]
-[img=80]res:///assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
+[img=80]res://assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
 Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
 Source: [url=https://godotengine.org/]godotengine.org[/url]  
 License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
