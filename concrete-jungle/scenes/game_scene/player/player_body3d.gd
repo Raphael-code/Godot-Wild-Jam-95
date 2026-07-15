@@ -1,10 +1,26 @@
 extends CharacterBody3D
+
+@export var move_speed : float = 8.0
+@export var acceleration : float = 20.0
+
+@export var rot_speed := 12.0
+@export var _gravity := -30.0
+
+@export var jump_impulse : float = 12.0
+# animation change idle/run
+@export var anim_change : float = 1.0
+
+
+
+
+
 @export_group("Camera")
 @export_range(0.0, 1.0) var mouse_sensitivity := 0.25
 #0.01
 #@export var tilt_upper_limit := PI / 3.0
 #@export var tilt_lower_limit := -PI / 8.0
 @onready var _camera_pivot: Node3D = %CamPivot
+@onready var _camera: Camera3D = %Camera3D
 
 var _camera_input_direction: Vector2 = Vector2.ZERO
 
@@ -38,3 +54,34 @@ func _physics_process(delta: float) -> void:
 	self.rotation.y -= _camera_input_direction.x * delta
 	
 	_camera_input_direction = Vector2.ZERO
+	
+	
+	var vert_input:= Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
+	#var vert_input:= Input.get_vector("MOVE_LEFT", "MOVE_RIGHT", "MOVE_FW", "MOVE_BCK")
+	print("Input Vector: ", vert_input)
+	var forward := _camera.global_basis.z
+	var right := _camera.global_basis.x
+
+	var move_direction := forward * vert_input.y + right * vert_input.x
+	move_direction.y = 0.0
+	move_direction = move_direction.normalized()
+	
+	var y_velocity := velocity.y
+	velocity.y = 0.0
+	velocity = velocity.move_toward(move_direction * move_speed, acceleration * delta)
+	 
+	velocity.y = y_velocity + _gravity * delta
+	var is_jumping := Input.is_action_just_pressed("JUMP") and is_on_floor()
+	if Input.is_action_just_pressed("JUMP"):
+		print("spacebar pressed")
+	if is_jumping:
+		velocity.y += jump_impulse
+		#add sound
+	
+	
+	
+	move_and_slide()
+	
+	
+	#var ground_speed := velocity.lenght()
