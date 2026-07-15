@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b7wyrrnjnmv02"]
+
+[ext_resource type="Texture2D" uid="uid://dwf3u7bovxtpb" path="res://assets/textures/basic/128pellenor.png" id="1_sq2fy"]
+
+[resource]
+albedo_texture = ExtResource("1_sq2fy")
+roughness = 0.9
+uv1_triplanar = true
+uv1_triplanar_sharpness = 15.454956
+texture_filter = 0
