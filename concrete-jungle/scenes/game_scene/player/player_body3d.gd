@@ -96,7 +96,7 @@ func _physics_process(delta: float) -> void:
 		jumped = 0
 		last_wall = null
 	if is_on_wall() and !is_on_floor():
-		velocity.y = -5
+		velocity.y = -10
 		last_wall = get_wall_normal()
 	if is_wall_jumping:
 		last_wall = get_wall_normal()
