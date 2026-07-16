@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dnen2wymne1ih"
+path="res://.godot/imported/placeholderProject Ex - Tranquility (freetouse.com).mp3-5b4748c041dbe77530ceec255bb78396.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/placeholderProject Ex - Tranquility (freetouse.com).mp3"
+dest_files=["res://.godot/imported/placeholderProject Ex - Tranquility (freetouse.com).mp3-5b4748c041dbe77530ceec255bb78396.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
