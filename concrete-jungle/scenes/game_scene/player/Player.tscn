@@ -19,8 +19,11 @@ shape = SubResource("CapsuleShape3D_1vivr")
 
 [node name="CamPivot" type="Node3D" parent="." unique_id=20714448]
 unique_name_in_owner = true
-transform = Transform3D(0.9155589, 0.4021841, 0, -0.4021841, 0.9155589, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CamPivot" unique_id=1710803496]
+[node name="CamTwist" type="Node3D" parent="CamPivot" unique_id=1723950040]
 unique_name_in_owner = true
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9, 1, 0)
+transform = Transform3D(0.9156626, 0.40194777, 0, -0.40194777, 0.9156626, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CamPivot/CamTwist" unique_id=1710803496]
+unique_name_in_owner = true
+transform = Transform3D(-4.3711385e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711395e-08, -9, 0.99999976, 0)
