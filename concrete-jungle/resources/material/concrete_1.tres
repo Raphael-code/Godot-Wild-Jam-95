@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cxukm3yui4xqa"]
+
+[ext_resource type="Texture2D" uid="uid://da88kmckni681" path="res://assets/textures/concrete floor/Concrete_a128.png" id="1_n7n8o"]
+
+[resource]
+albedo_texture = ExtResource("1_n7n8o")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 6.498015
