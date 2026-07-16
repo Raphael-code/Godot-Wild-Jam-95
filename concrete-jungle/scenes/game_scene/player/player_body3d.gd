@@ -55,28 +55,39 @@ func _physics_process(delta: float) -> void:
 	
 	_camera_input_direction = Vector2.ZERO
 	
-	
-	var vert_input:= Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
-	#var vert_input:= Input.get_vector("MOVE_LEFT", "MOVE_RIGHT", "MOVE_FW", "MOVE_BCK")
-	print("Input Vector: ", vert_input)
+	var move_input := InputActions.get_move_vector()
 	var forward := _camera.global_basis.z
+	forward.y = 0.0
+	forward = forward.normalized()
+	
 	var right := _camera.global_basis.x
-
-	var move_direction := forward * vert_input.y + right * vert_input.x
-	move_direction.y = 0.0
-	move_direction = move_direction.normalized()
+	right.y = 0.0
+	right = right.normalized()
+	
+	var move_direction := forward * move_input.y + right * move_input.x
+	
+	#var forward := _camera.global_basis.z
+	#var right := _camera.global_basis.x
+#
+	#var move_direction := forward * move_input.y + right * move_input.x
+	#move_direction.y = 0.0
+	#move_direction = move_direction.normalized()
 	
 	var y_velocity := velocity.y
 	velocity.y = 0.0
 	velocity = velocity.move_toward(move_direction * move_speed, acceleration * delta)
 	 
-	velocity.y = y_velocity + _gravity * delta
-	var is_jumping := Input.is_action_just_pressed("JUMP") and is_on_floor()
-	if Input.is_action_just_pressed("JUMP"):
-		print("spacebar pressed")
+	
+	if not is_on_floor():
+		velocity.y = y_velocity + _gravity * delta
+		
+	var is_jumping := InputActions.is_jump_pressed() and is_on_floor()
+	#var is_jumping := Input.is_action_just_pressed("JUMP") and is_on_floor()
+	#if Input.is_action_just_pressed("JUMP"):
+		#print("spacebar pressed")
 	if is_jumping:
-		velocity.y += jump_impulse
+		velocity.y = jump_impulse
+		#velocity.y += jump_impulse
 		#add sound
 	
 	

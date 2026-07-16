@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://dmjqkkapk5nu4"
 
-[autoload]
-
-InputManager="*uid://bxkyg3y3hvsc5"
-
 [display]
 
 window/size/viewport_width=640
@@ -39,7 +35,7 @@ enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
 folder_colors={
 "res://addons/maaacks_game_template/base/nodes/config/": "pink",
 "res://assets/": "blue",
-"res://autoload/": "red",
+"res://input/": "red",
 "res://resources/": "green",
 "res://scenes/": "purple",
 "res://scenes/game_scene/": "red",
