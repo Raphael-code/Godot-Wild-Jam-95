@@ -10,15 +10,13 @@ extends CharacterBody3D
 # animation change idle/run
 @export var anim_change : float = 1.0
 
-
-
-
 @export_group("Camera")
-@export_range(0.0, 1.0) var mouse_sensitivity := 0.25
-#0.01
+@export_range(0.0, 1.0) var mouse_sensitivity := 0.25 #0.1?
+
 #@export var tilt_upper_limit := PI / 3.0
 #@export var tilt_lower_limit := -PI / 8.0
 @onready var _camera_pivot: Node3D = %CamPivot
+@onready var _camera_twist: Node3D = %CamTwist
 @onready var _camera: Camera3D = %Camera3D
 
 var _camera_input_direction: Vector2 = Vector2.ZERO
@@ -41,9 +39,9 @@ func _input(event: InputEvent) -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	# pivot up/down
-	_camera_pivot.rotation.x -= _camera_input_direction.y * delta
-	_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, -PI / 3.0, PI / 3.0)
+	# twist pivot up/down
+	_camera_twist.rotation.x -= _camera_input_direction.y * delta
+	_camera_twist.rotation.x = clamp(_camera_pivot.rotation.x, -PI / 3.0, PI / 3.0)
 #player left/right
 	self.rotation.y -= _camera_input_direction.x * delta
 	
