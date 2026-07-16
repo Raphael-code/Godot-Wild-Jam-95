@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ibq0i56ass64"]
+
+[ext_resource type="Texture2D" uid="uid://bl5ab1yikt014" path="res://assets/textures/basic/128redhorns.png" id="1_85epj"]
+
+[resource]
+albedo_texture = ExtResource("1_85epj")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 19.6983
