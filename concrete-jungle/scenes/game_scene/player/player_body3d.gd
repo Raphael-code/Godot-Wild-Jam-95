@@ -5,7 +5,9 @@ extends CharacterBody3D
 
 @export var _gravity := -30.0
 @export var jump_impulse : float = 12.0
-
+var wall_jump_impulse : float = 12.0
+var jumped = 0
+var last_wall = null
 @export var rot_speed := 12.0
 # animation change idle/run
 @export var anim_change : float = 1.0
@@ -36,7 +38,13 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed('ui_cancel'):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
-	
+func get_wall_side():
+	var hit = get_wall_normal()
+	print(hit)
+	last_wall = hit
+	velocity = hit * wall_jump_impulse
+	velocity.y = wall_jump_impulse
+
 
 func _physics_process(delta: float) -> void:
 	# twist pivot up/down
@@ -67,12 +75,23 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y = y_velocity + _gravity * delta
 		
+	if last_wall == null or (get_wall_normal() != last_wall):
+		jumped = 0
 	var is_jumping := InputActions.is_jump_pressed() and is_on_floor()
+	var is_on_ground := is_on_floor()
+	var is_wall_jumping := InputActions.is_jump_pressed() and !is_on_floor() and is_on_wall() and jumped == 0
+
 	if is_jumping:
 		velocity.y = jump_impulse
+	if is_on_ground:
+		jumped = 0
+		last_wall = null
+	if is_wall_jumping:
+		jumped = 1
+		get_wall_side()
 		#add sound
-		
-	move_and_slide()
 	
+	move_and_slide()
+
 	
 	#var ground_speed := velocity.lenght()
