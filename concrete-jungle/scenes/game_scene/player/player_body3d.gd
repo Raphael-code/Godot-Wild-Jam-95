@@ -20,6 +20,12 @@ extends CharacterBody3D
 @onready var _camera: Camera3D = %Camera3D
 
 var _camera_input_direction: Vector2 = Vector2.ZERO
+var _was_on_floor: bool = false
+
+@onready var _landing_particles: GPUParticles3D = %LandingParticles
+# maybe in animation? footstepsfrom animation also - change player child nodes later
+# @onready var _run_particles: GPUParticles3D = %RunParticles
+#_run_particles.emitting = is_on_floor() and velocity.length() > 1
 
 func _unhandled_input(event: InputEvent) -> void:
 	var is_camera_motion : bool = (
@@ -71,9 +77,16 @@ func _physics_process(delta: float) -> void:
 	var is_jumping := InputActions.is_jump_pressed() and is_on_floor()
 	if is_jumping:
 		velocity.y = jump_impulse
-		#add sound
+		%PlayerJump.play()
 		
 	move_and_slide()
+	if !_was_on_floor and is_on_floor():
+		print("landed")
+		%PlayerLand.play()
+		_landing_particles.restart()
+	
+	# land particles
+	_was_on_floor = is_on_floor()
 	
 	
 	#var ground_speed := velocity.lenght()

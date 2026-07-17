@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://b7wyrrnjnmv02" path="res://resources/material/pellenor.tres" id="1_mg67k"]
 [ext_resource type="Material" uid="uid://ibq0i56ass64" path="res://resources/material/redhorns.tres" id="3_hasdq"]
 [ext_resource type="Material" uid="uid://cxukm3yui4xqa" path="res://resources/material/concrete_1.tres" id="4_usg5w"]
+[ext_resource type="Material" uid="uid://d1w1i5iq5rn4i" path="res://resources/material/concrete_panel.tres" id="5_oye0j"]
 
 [sub_resource type="Environment" id="Environment_1vivr"]
 
@@ -38,8 +39,14 @@ use_collision = true
 size = Vector3(5, 2, 11.447144)
 material = ExtResource("4_usg5w")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="csg/CSGBox3D3" unique_id=1954975526]
-transform = Transform3D(0.15909623, -0.98370177, -0.08378376, 0.109734416, -0.06671904, 0.9917194, -0.9811457, -0.1669727, 0.097331166, -0.8453598, 15.808611, -13.284763)
+[node name="CSGBox3D4" type="CSGBox3D" parent="csg" unique_id=1954975526]
+transform = Transform3D(-0.09595162, -0.0163292, -0.99525225, 0.1677693, -0.98582655, 7.450581e-09, -0.9811457, -0.1669727, 0.097331166, -9.349828, 5.1105146, -12.319544)
 use_collision = true
 size = Vector3(5, 2, 11.447144)
 material = ExtResource("4_usg5w")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="csg" unique_id=1868708873]
+transform = Transform3D(1.0000002, 0, 0, 0, 0.8407818, -0.54137456, 0, 0.54137456, 0.8407817, 14.13349, -0.09641838, -31.892683)
+use_collision = true
+size = Vector3(68.317154, 0.5, 41.292896)
+material = ExtResource("5_oye0j")
