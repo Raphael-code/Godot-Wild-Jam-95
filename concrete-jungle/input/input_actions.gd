@@ -7,6 +7,7 @@ const ACTIONS := {
 	MOVE_LEFT =	"MOVE_LEFT",
 	MOVE_RIGHT ="MOVE_RIGHT",
 	JUMP = 		"JUMP",
+	DASH = 		"DASH",
 }
 
 static func get_move_vector() -> Vector2:
@@ -20,3 +21,5 @@ static func get_move_vector() -> Vector2:
 #add others
 static func is_jump_pressed() -> bool:
 	return Input.is_action_pressed(ACTIONS.JUMP)
+static func is_dash_pressed() -> bool:
+	return Input.is_action_just_pressed(ACTIONS.DASH)

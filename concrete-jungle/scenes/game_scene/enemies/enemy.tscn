@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://b23xsh534rn4"]
+
+[ext_resource type="Script" uid="uid://c7ci552k563a2" path="res://scenes/game_scene/enemies/enemy.gd" id="1_gsd21"]
+[ext_resource type="Texture2D" uid="uid://cj8eblckx20eo" path="res://assets/textures/particles/flame_03.png" id="1_vanlq"]
+[ext_resource type="Shader" uid="uid://gu3aw4sdxeid" path="res://scenes/game_scene/enemies/enemy_fog.gdshader" id="3_rt7fy"]
+[ext_resource type="Script" uid="uid://c3aui5xyqokja" path="res://scenes/game_scene/enemies/death_zone.gd" id="4_on6cy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vanlq"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_vanlq")
+normal_scale = 3.0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_gsd21"]
+_data = [Vector2(0.039007097, 0.39285713), 0.0, 0.0, 0, 0, Vector2(0.48936173, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_usg5w"]
+curve = SubResource("Curve_gsd21")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ptykv"]
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_usg5w")
+
+[sub_resource type="QuadMesh" id="QuadMesh_yh07w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ytko3"]
+size = Vector3(0.012756348, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kryk8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nq336"]
+noise = SubResource("FastNoiseLite_kryk8")
+seamless = true
+normalize = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gsd21"]
+render_priority = 0
+shader = ExtResource("3_rt7fy")
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nq336")
+shader_parameter/noise_scale = 3.0
+shader_parameter/noise_flow = Vector2(0.2, 0)
+shader_parameter/fog_strength = 0.5
+shader_parameter/edge_fade_size = 0.25
+shader_parameter/noise_contrast = 0.5
+shader_parameter/noise_low = 0.2
+shader_parameter/noise_high = 0.8
+
+[sub_resource type="QuadMesh" id="QuadMesh_kryk8"]
+material = SubResource("ShaderMaterial_gsd21")
+size = Vector2(10, 10)
+
+[node name="enemy" type="CharacterBody3D" unique_id=622023957]
+collision_layer = 8
+script = ExtResource("1_gsd21")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=883535946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 3)
+material_override = SubResource("StandardMaterial3D_vanlq")
+cast_shadow = 0
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_ptykv")
+draw_passes = 2
+draw_pass_1 = SubResource("QuadMesh_yh07w")
+draw_pass_2 = null
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=1371816005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -3)
+material_override = SubResource("StandardMaterial3D_vanlq")
+cast_shadow = 0
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_ptykv")
+draw_passes = 2
+draw_pass_1 = SubResource("QuadMesh_yh07w")
+draw_pass_2 = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1818800942]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0.026786804, 0, 0)
+shape = SubResource("BoxShape3D_ytko3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1665524956]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 0.87978363, 0, -0.008896828)
+mesh = SubResource("QuadMesh_kryk8")
+
+[node name="death_zone" type="Area3D" parent="." unique_id=2102942192]
+collision_layer = 8
+script = ExtResource("4_on6cy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="death_zone" unique_id=1306473828]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0.08829641, 0, 0)
+shape = SubResource("BoxShape3D_ytko3")
+
+[connection signal="body_entered" from="death_zone" to="." method="_on_death_zone_body_entered"]
