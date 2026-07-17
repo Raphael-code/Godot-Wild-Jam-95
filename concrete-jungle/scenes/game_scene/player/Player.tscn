@@ -26,4 +26,5 @@ transform = Transform3D(0.9156626, 0.40194777, 0, -0.40194777, 0.9156626, 0, 0, 
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot/CamTwist" unique_id=1710803496]
 unique_name_in_owner = true
-transform = Transform3D(-4.3711385e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711395e-08, -9, 0.99999976, 0)
+transform = Transform3D(-4.2949374e-08, -0.18590848, -0.9825672, -8.126321e-09, 0.9825672, -0.18590848, 1, 5.3290705e-15, -4.371139e-08, -0.38989967, 0.6924796, 0)
+fov = 60.1
