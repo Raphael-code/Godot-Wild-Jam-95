@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c7ci552k563a2" path="res://scenes/game_scene/enemies/enemy.gd" id="1_gsd21"]
 [ext_resource type="Texture2D" uid="uid://cj8eblckx20eo" path="res://assets/textures/particles/flame_03.png" id="1_vanlq"]
 [ext_resource type="Shader" uid="uid://gu3aw4sdxeid" path="res://scenes/game_scene/enemies/enemy_fog.gdshader" id="3_rt7fy"]
+[ext_resource type="Script" uid="uid://c3aui5xyqokja" path="res://scenes/game_scene/enemies/death_zone.gd" id="4_on6cy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vanlq"]
 transparency = 1
@@ -85,9 +86,19 @@ draw_pass_1 = SubResource("QuadMesh_yh07w")
 draw_pass_2 = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1818800942]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0.36169434, 0, 0)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0.026786804, 0, 0)
 shape = SubResource("BoxShape3D_ytko3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1665524956]
-transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 1.4590149, 0, -0.008896828)
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 0.87978363, 0, -0.008896828)
 mesh = SubResource("QuadMesh_kryk8")
+
+[node name="death_zone" type="Area3D" parent="." unique_id=2102942192]
+collision_layer = 8
+script = ExtResource("4_on6cy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="death_zone" unique_id=1306473828]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0.08829641, 0, 0)
+shape = SubResource("BoxShape3D_ytko3")
+
+[connection signal="body_entered" from="death_zone" to="." method="_on_death_zone_body_entered"]

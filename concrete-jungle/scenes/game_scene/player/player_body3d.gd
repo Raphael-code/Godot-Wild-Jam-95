@@ -78,7 +78,6 @@ func _physics_process(delta: float) -> void:
 	right = right.normalized()
 	
 	var move_direction := forward * move_input.y + right * move_input.x
-	print(move_direction)
 	var y_velocity := velocity.y
 	velocity.y = 0.0
 	velocity = velocity.move_toward(move_direction * move_speed, acceleration * delta)
@@ -97,7 +96,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if is_jumping:
-		%PlayerJump.play()
+		# %PlayerJump.play()
 		velocity.y = jump_impulse
 
 	if is_on_ground:
@@ -107,7 +106,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -10
 		last_wall = get_wall_normal()
 	if is_wall_jumping:
-		%PlayerJump.play()
+		# %PlayerJump.play()
 		last_wall = get_wall_normal()
 		jumped = 1
 		get_wall_side()
@@ -133,8 +132,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if !_was_on_floor and is_on_floor():
 		print("landed")
-		%PlayerLand.play()
-		_landing_particles.restart()
+		# %PlayerLand.play()
+		# _landing_particles.restart()
 	
 	# land particles
 	_was_on_floor = is_on_floor()
