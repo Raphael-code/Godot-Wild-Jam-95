@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dnqw0ybh0thyu" path="res://scenes/game_scene/player/Player.tscn" id="1_4frfy"]
 [ext_resource type="Material" uid="uid://b7wyrrnjnmv02" path="res://resources/material/pellenor.tres" id="1_mg67k"]
+[ext_resource type="PackedScene" uid="uid://b23xsh534rn4" path="res://scenes/game_scene/enemies/enemy.tscn" id="3_hasdq"]
 
 [sub_resource type="Environment" id="Environment_1vivr"]
 
@@ -17,7 +18,16 @@ transform = Transform3D(0.8315562, 0.3579592, -0.42471105, 0, 0.7646381, 0.64445
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = ExtResource("1_mg67k")
 use_collision = true
+collision_layer = 6
 size = Vector3(20, 1, 20)
 
+[node name="enemy" parent="." unique_id=622023957 node_paths=PackedStringArray("player") instance=ExtResource("3_hasdq")]
+transform = Transform3D(-2.2311463, 0, -1.95053e-07, 0, 2.2311463, 0, 1.95053e-07, 0, -2.2311463, 10, 0.601, 9.369)
+collision_mask = 0
+platform_floor_layers = 4294967294
+player = NodePath("../PlayerChar")
+
 [node name="PlayerChar" parent="." unique_id=104077842 instance=ExtResource("1_4frfy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.321189, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.999027, 2.6165142, -2.235382)
+collision_mask = 6
+platform_wall_layers = 1
