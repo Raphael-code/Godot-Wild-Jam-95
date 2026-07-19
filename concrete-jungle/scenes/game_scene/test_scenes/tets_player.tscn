@@ -65,4 +65,5 @@ platform_wall_layers = 1
 
 [node name="enemy" parent="." unique_id=622023957 node_paths=PackedStringArray("player") instance=ExtResource("6_s3nr0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 21.974731, 8.575842, 0.37008286)
+visible = false
 player = NodePath("../PlayerChar")

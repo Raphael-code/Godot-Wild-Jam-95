@@ -8,6 +8,27 @@ height = 1.7
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1vivr"]
 
+[sub_resource type="Curve" id="Curve_ytko3"]
+_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_auskg"]
+curve = SubResource("Curve_ytko3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vivr"]
+lifetime_randomness = 0.37
+direction = Vector3(0.1, 1, 0)
+spread = 180.0
+angular_velocity_min = 2.9999838
+angular_velocity_max = 4.999984
+damping_min = 2.0
+damping_max = 3.0000002
+scale_min = 0.0
+scale_max = 0.0
+scale_curve = SubResource("CurveTexture_auskg")
+
+[sub_resource type="BoxMesh" id="BoxMesh_v5gy4"]
+
 [node name="PlayerBody3D" type="CharacterBody3D" unique_id=104077842]
 script = ExtResource("1_ytko3")
 
@@ -27,5 +48,15 @@ transform = Transform3D(0.9156626, 0.40194777, 0, -0.40194777, 0.9156626, 0, 0, 
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot/CamTwist" unique_id=1710803496]
 unique_name_in_owner = true
-transform = Transform3D(-4.2949374e-08, -0.18590848, -0.9825672, -8.126321e-09, 0.9825672, -0.18590848, 1, 5.3290705e-15, -4.371139e-08, -0.38989967, 0.6924796, 0)
+transform = Transform3D(-0.94276416, -0.23715627, -0.23442006, -0.29626903, 0.9183403, 0.2624416, 0.15303776, 0.31687194, -0.9360405, -1.261132, 2.677202, -4.6040745)
 fov = 60.1
+
+[node name="LandingParticles" type="GPUParticles3D" parent="." unique_id=416542934]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0114979, 0)
+cast_shadow = 0
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1vivr")
+draw_pass_1 = SubResource("BoxMesh_v5gy4")

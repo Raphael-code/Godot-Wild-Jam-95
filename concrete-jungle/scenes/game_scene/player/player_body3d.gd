@@ -133,7 +133,7 @@ func _physics_process(delta: float) -> void:
 	if !_was_on_floor and is_on_floor():
 		print("landed")
 		# %PlayerLand.play()
-		# _landing_particles.restart()
+		_landing_particles.restart()
 	
 	# land particles
 	_was_on_floor = is_on_floor()
